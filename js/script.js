@@ -1,39 +1,60 @@
 const img1 = document.getElementById('img1')
-let level = 1
 
 const cards = document.querySelectorAll('[id^="img"]')
 
-console.log(cards)
+// console.log(cards)
 
 // evento on click
 function cardsClick (cards) {
   cards.forEach(elem => {
     elem.onclick = function (e) {
-      console.log(e.target)
+      selectCard(e.target)
     }
   })
 }
-var arrCartas = ['1', '2', '3', '4', '1', '2', '3', '4']
-let cardsLevel1 = []
-// enseñar cartas necesarias segun nivel
-function setLevel (num) {
-  if (level === 1) {
-    var copy = arrCartas.slice(0, num)
-    for (let i = 0; i < num; i++) {
+const level1 = ['1', '2', '1', '2']
+const level2 = ['1', '2', '3', '4', '1', '2', '3', '4']
+const level3 = ['1', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6']
 
-      cardsLevel1.push(cards[i])
-      console.log(cards[i])
-      cards[i].style.visibility = 'visible'
-      var randomCard = Math.floor(Math.random() * copy.length)
-      cards[i].childNodes[0].innerText = copy[randomCard]
-      copy.splice(randomCard, 1)
+const cardsLevel1 = []
+// enseñar cartas necesarias segun nivel
+let positionArray = []
+function setLevel (arr) {
+  const copy = arr.slice(0, arr.length)
+  positionArray = []
+  for (let i = 0; i < arr.length; i++) {
+    positionArray.push(cards[i])
+    cardsLevel1.push(cards[i])
+
+    cards[i].style.visibility = 'visible'
+    const randomCard = Math.floor(Math.random() * copy.length)
+    cards[i].childNodes[0].innerText = copy[randomCard]
+    copy.splice(randomCard, 1)
+  }
+
+  cardsClick(cardsLevel1)
+}
+setLevel(level2)
+// ----------------------------------------------
+
+let matchCard = []
+
+function selectCard (card) {
+  matchCard.push(card)
+  console.log(matchCard)
+  if (matchCard.length === 2) {
+    if (matchCard[0] !== matchCard[1]) {
+      if (matchCard[0].innerText === matchCard[1].innerText) {
+        console.log('coinciden')
+      } else {
+        console.log('no coinciden')
+      }
+    } else {
+      console.log('pulsa otra carta')
     }
-    
-    
-    cardsClick(cardsLevel1)
+    console.log(matchCard[0])
+    matchCard = []
+  } else {
+    matchCard[0].style.pointerEvents = 'none'
   }
 }
-setLevel(8)
-
-
-//cards[0].childNodes[0].innerText = '13'
