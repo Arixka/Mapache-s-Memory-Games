@@ -17,6 +17,9 @@
   vertical-align: 3%;
 }
 
+.initial {
+  background-color: black;
+}
 #canvas > div {
   margin: 6%;
   background-color: lightgreen;
@@ -25,7 +28,7 @@
 }
 
 #table > div:hover {
-  background-color: blue;
+  background-color: white;
 }
 
 .invisible {
