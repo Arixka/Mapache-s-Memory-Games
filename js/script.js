@@ -31,7 +31,7 @@ setLevel(arrCards)
 
 
 let cont = 0
-let cont2 = 0
+let cont2 = 2
 function selectCard (card) {
   matchCard.push(card)
   if (matchCard.length === 2) {
@@ -46,8 +46,8 @@ function selectCard (card) {
       matchCard[1].style.pointerEvents = 'none'
     } else {
       console.log('no coinciden')
-      cont2++
-      if (cont2 === 2) {
+      cont2--
+      if (cont2 === 0) {
         window.alert("LOOOSER!!")
       }
     }
@@ -58,8 +58,3 @@ function selectCard (card) {
   }
 }
 // -------------------------------------------------
-
-function winner () {
-  let cont = 0
-
-}
