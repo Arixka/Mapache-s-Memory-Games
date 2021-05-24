@@ -43,6 +43,7 @@ function selectCard (card) {
   matchCard.push(card)
   console.log(matchCard)
   if (matchCard.length === 2) {
+    matchCard[0].style.pointerEvents = 'auto'
     if (matchCard[0] !== matchCard[1]) {
       if (matchCard[0].innerText === matchCard[1].innerText) {
         console.log('coinciden')
@@ -54,7 +55,7 @@ function selectCard (card) {
     }
     console.log(matchCard[0])
     matchCard = []
-  } else {
+  } else if (matchCard.length === 1){
     matchCard[0].style.pointerEvents = 'none'
   }
 }
