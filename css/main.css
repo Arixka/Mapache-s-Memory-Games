@@ -10,7 +10,7 @@
   height: 70px;
   border-radius: 3px;
   visibility: hidden;
-  background-color: aquamarine;
+  border: 2px solid black;
   display: inline-block;
   cursor: pointer;
   text-align: center;
@@ -30,4 +30,20 @@
 
 .invisible {
   background-color: transparent;
+}
+
+.ice-cream {
+  background-color: yellow;
+}
+
+.pancake {
+  background-color: green;
+}
+
+.donut {
+  background-color: pink;
+}
+
+.waffle {
+  background-color: orange;
 }
