@@ -1,16 +1,18 @@
 #canvas {
   width: 600px;
-  border: 1px solid black;
+  height: 400px;
   margin: 10vw 0 0 10vh;
+  overflow: hidden;
+  position: relative;
 }
 
 #table > div{
-  margin: 8.5% 4%;
-  width: 70px;
-  height: 70px;
+ margin: 30px 0px 30px 20px;
+  width: 120px;
+  height: 120px;
   border-radius: 3px;
   visibility: hidden;
-  border: 2px solid black;
+  border: 1px solid black;
   display: inline-block;
   cursor: pointer;
   text-align: center;
@@ -18,10 +20,8 @@
 }
 
 #canvas > div:first-child {
-  margin: 6%;
-  background-color: lightgreen;
-  width: 80%;
-  height: 80%;
+  height: 400px;
+  width: 600px;
 }
 
 #table > div:hover {
@@ -33,26 +33,45 @@
 }
 
 .ice-cream {
-  background-color: yellow;
+  background-image: url(../imagenes/ice-cream.png);
+  background-size: contain;
 }
 
 .pancake {
-  background-color: green;
+  background-image: url(../imagenes/pancake.png);
+  background-size: contain;
 }
 
 .donut {
-  background-color: pink;
+  background-image: url(../imagenes/donut.png);
+  background-size: contain;
 }
 
 .waffle {
-  background-color: orange;
+  background-image: url(../imagenes/waffle.png);
+  background-size: contain;
 }
 
 
 #btn-start {
   text-align: center;
+  margin-bottom: 15px;
+}
+
+#start {
+  background: linear-gradient(0deg, rgba(195,255,235,1) 39%, rgba(255,192,238,1) 99%);
+
+}
+
+#background {
+  background-image: url(../imagenes/fondo.gif);
+  background-size: contain;
+  background-repeat: cover;
+  position: absolute;
+  z-index: -1;
 }
 
 .initial {
-  background-color: black;
+  background-image: url(../imagenes/carta-cara-3.png);
+  background-size: contain;
 }
