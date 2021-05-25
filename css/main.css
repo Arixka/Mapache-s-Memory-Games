@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Chela+One&display=swap%27');
+
+body {
+  background-image: url(../imagenes/wall2.jpg);
+  background-size: cover;
+}
 #canvas {
   width: 600px;
   height: 400px;
-  margin: 10vw 0 0 10vh;
+  margin: 10vw auto 0 auto;
   overflow: hidden;
   position: relative;
 }
@@ -75,3 +81,80 @@
   background-image: url(../imagenes/carta-cara-3.png);
   background-size: contain;
 }
+/*------------------------------*/
+
+
+/* The Modal (background) */
+.modal {
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 35vw;
+  top: 25px;
+  height: 600px;
+  width: 610px;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 2px solid black;
+  background-size: cover;
+}
+
+/* Modal Content */
+.modal-container {
+  height: 400px;
+  width: 600px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Chela One', cursive;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}
+/* The Modal (background) */
+.modal2 {
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 35vw;
+  top: 25px;
+  height: 600px;
+  width: 610px;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 2px solid black;
+  background-size: cover;
+}
+
+/* Modal Content */
+.modal-container2 {
+  height: 400px;
+  width: 600px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Chela One', cursive;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+#img-game-over{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.show {
+  display: block;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.close {
+  display: none;
+  pointer-events: auto;
+  opacity: 1;
+}
+

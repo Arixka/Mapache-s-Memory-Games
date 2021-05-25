@@ -8,6 +8,7 @@ let matchCard = [] // Selected card pair
 let contWinner = 0
 let contLoser = 2
 
+const modal = document.getElementById('myModal')
 // --------------------------------------------
 
 function setLevel (level) { // damos colores a las cartas
@@ -38,16 +39,20 @@ function selectCard (card) {
       console.log('coinciden')
       contWinner++
       if (contWinner === 4) {
-        window.alert('WINNEEER!!!')
+        // window.alert('WINNEEER!!!')
+        modalContainer2[0].classList.remove('close')
+        modalContainer2[0].classList.add('show')
       }
       matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
     } else {
-      let timerId = setTimeout(flipCards, 500, matchCard)
+      const timerId = setTimeout(flipCards, 500, matchCard)
       console.log('no coinciden')
       contLoser--
       if (contLoser === 0) {
-        window.alert('LOOOSER!!')
+        // window.alert('LOOOSER!!')
+        modalContainer[0].classList.remove('close')
+        modalContainer[0].classList.add('show')
         resetLevel(timerId)
       }
     }
@@ -66,6 +71,7 @@ function flipCards (arr) {
 }
 
 function resetLevel (timerId) {
+  console.log('por aqui')
   contWinner = 0
   contLoser = 2
   reset(cards)
@@ -75,8 +81,9 @@ function resetLevel (timerId) {
 }
 
 function reset (arr) {
+  console.log('por aca')
   arr.forEach(elem => {
-    var classes = elem.getAttribute('class').split(' ')
+    const classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
     if (elem.classList.value !== '') {
       elem.classList.remove('initial')
@@ -86,8 +93,37 @@ function reset (arr) {
 
 // -------------------------------------------------
 
-let button = document.getElementById('btn-start')
+const button = document.getElementById('btn-start')
 button.onclick = function () {
   setLevel(arrCards)
-  let timerId = setTimeout(flipCards, 2000, cards)
+  const timerId = setTimeout(flipCards, 2000, cards)
+  button.style.display ='none'
 }
+
+// -------------------
+const btnModal = document.getElementById('open-modal')
+const btnModalWin = document.getElementById('open-modal2')
+
+const modalContainer = document.getElementsByClassName('modal-container')
+const modalContainer2 = document.getElementsByClassName('modal-container2')
+const btnReset = document.getElementById('btn-reset')
+const btnReset2 = document.getElementById('btn-reset2')
+
+btnReset.addEventListener('click', function () {
+  modalContainer[0].classList.add('close')
+  modalContainer[0].classList.remove('show')
+})
+
+btnReset2.addEventListener('click', function () {
+  modalContainer2[0].classList.add('close')
+  modalContainer2[0].classList.remove('show')
+})
+// ----- btn-modal que se va pronto
+// btnModal.addEventListener('click', function () {
+//   modalContainer[0].classList.remove('close')
+//   modalContainer[0].classList.add('show')
+// })
+// btnModalWin.addEventListener('click', function(){
+//   modalContainer2[0].classList.remove('close')
+//   modalContainer2[0].classList.add('show')
+// })
