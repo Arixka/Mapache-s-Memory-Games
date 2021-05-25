@@ -25,7 +25,7 @@
 }
 
 #table > div:hover {
-  box-shadow: 1px 1px 20px yellow;
+  box-shadow: 1px 1px 20px grey;
 }
 
 .invisible {
