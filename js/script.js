@@ -5,6 +5,11 @@ const arrCards = ['ice-cream', 'waffle', 'pancake', 'donut', 'ice-cream', 'waffl
 
 let matchCard = [] // Selected card pair
 
+let sound = document.getElementById('sound') // variables de sonido
+let music = document.getElementById('music')
+let play = document.getElementById('btn-play')
+let pause = document.getElementById('btn-pause')
+
 let contWinner = 0
 let contLoser = 2
 
@@ -23,6 +28,7 @@ function setLevel (level) { // damos colores a las cartas
   cards.forEach(elem => {
     elem.onclick = function (e) {
       selectCard(e.currentTarget)
+      sound.play()
     }
   })
 }
@@ -90,4 +96,12 @@ let button = document.getElementById('btn-start')
 button.onclick = function () {
   setLevel(arrCards)
   let timerId = setTimeout(flipCards, 2000, cards)
+}
+
+play.onclick = function () {
+  music.play()
+}
+
+pause.onclick = function () {
+  music.pause()
 }
