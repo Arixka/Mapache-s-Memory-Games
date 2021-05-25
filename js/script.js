@@ -94,6 +94,7 @@ function reset (arr) {
 
 let button = document.getElementById('btn-start')
 button.onclick = function () {
+  var interval = setInterval(moveBox, 20)
   setLevel(arrCards)
   let timerId = setTimeout(flipCards, 2000, cards)
 }
@@ -104,4 +105,16 @@ play.onclick = function () {
 
 pause.onclick = function () {
   music.pause()
+}
+
+// ------------------------------------------------
+
+let character = document.getElementById('character')
+let characterLeft = 520;
+
+const moveBox = function () {
+  if (characterLeft > -20 ) {
+    characterLeft -= 1
+  }
+  character.style.left = characterLeft+'px'
 }
