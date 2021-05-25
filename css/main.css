@@ -17,10 +17,7 @@
   vertical-align: 3%;
 }
 
-.initial {
-  background-color: black;
-}
-#canvas > div {
+#canvas > div:first-child {
   margin: 6%;
   background-color: lightgreen;
   width: 80%;
@@ -28,7 +25,7 @@
 }
 
 #table > div:hover {
-  background-color: white;
+  box-shadow: 1px 1px 20px yellow;
 }
 
 .invisible {
@@ -49,4 +46,13 @@
 
 .waffle {
   background-color: orange;
+}
+
+
+#btn-start {
+  text-align: center;
+}
+
+.initial {
+  background-color: black;
 }
