@@ -231,13 +231,14 @@ body {
     background-image: url(../imagenes/sound-off.png);
 }
 
-#fullness-bar {
+.fullness-bar {
   position: absolute;
   height: 15px;
   width: 100%;
   margin: 70px 0 0 0;
   background-color: yellow;
   border-radius: 20px;
+  transition: background-color 0.5s;
 }
 
 @keyframes shake {
@@ -274,4 +275,8 @@ body {
 
 .wrong {
   animation: shake 0.3s;
+}
+
+.time-wrong {
+  background-color: red;
 }

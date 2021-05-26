@@ -55,7 +55,10 @@ function selectCard (card) {
         clearInterval(interval)
       }
     } else {
+      // ------------------------------------- Para cambiar la barra a rojo brevemente
       character.classList.add('wrong')
+      bar.classList.add('time-wrong')
+      // ----------------------------------------
       characterLeft -= 25
       const timerId = setTimeout(flipCards, 500, matchCard)
     }
@@ -160,7 +163,7 @@ play.onclick = function () {
 // funcion que resetee el muñeco y la barra
 
 const character = document.getElementById('character')
-const bar = document.getElementById('fullness-bar')
+const bar = document.getElementsByClassName('fullness-bar')[0]
 let characterLeft = 520
 const barWidth = character.style.left
 
