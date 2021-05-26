@@ -109,7 +109,6 @@ body {
   font-weight: 600;
   font-size: 16px;
   margin-top: -5px;
-  cursor: pointer;
 }
 
 #background {
@@ -125,28 +124,21 @@ body {
   background-size: contain;
 }
 
-#btn-pause {
-  background-image: url(../imagenes/pausita.png);
-  background-size: cover;
-  width: 40px;
-  height: 40px;
-  border-radius: 30px;
-
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 150px;
-  cursor: pointer;
-}
-
-#btn-play {
-  background-image: url(../imagenes/play.png);
+#sound-button {
   background-size: cover;
   width: 40px;
   height: 40px;
   border-radius: 30px;
   position: absolute;
-
   margin-top: 20px;
   margin-left: 100px;
   cursor: pointer;
+}
+
+.sound-on {
+    background-image: url(../imagenes/sound-on.png);
+}
+
+.sound-off {
+    background-image: url(../imagenes/sound-off.png);
 }

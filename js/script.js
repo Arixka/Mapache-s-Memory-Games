@@ -5,10 +5,9 @@ const arrCards = ['ice-cream', 'waffle', 'pancake', 'donut', 'ice-cream', 'waffl
 
 let matchCard = [] // Selected card pair
 
-const sound = document.getElementById('sound') // variables de sonido
-const music = document.getElementById('music')
-const play = document.getElementById('btn-play')
-const pause = document.getElementById('btn-pause')
+let sound = document.getElementById('sound') // variables de sonido
+let music = document.getElementById('music')
+let play = document.getElementById('sound-button')
 
 let contWinner = 0
 let contLoser = 2
@@ -28,6 +27,7 @@ function setLevel (level) { // damos colores a las cartas
   cards.forEach(elem => {
     elem.onclick = function (e) {
       selectCard(e.currentTarget)
+
       sound.play()
     }
   })
@@ -49,7 +49,7 @@ function selectCard (card) {
       matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
     } else {
-      const timerId = setTimeout(flipCards, 500, matchCard)
+      let timerId = setTimeout(flipCards, 500, matchCard)
       console.log('no coinciden')
       contLoser--
       if (contLoser === 0) {
@@ -82,7 +82,7 @@ function resetLevel (timerId) {
 
 function reset (arr) {
   arr.forEach(elem => {
-    let classes = elem.getAttribute('class').split(' ')
+    var classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
     if (elem.classList.value !== '') {
       elem.classList.remove('initial')
@@ -92,28 +92,37 @@ function reset (arr) {
 
 // -------------------------------------------------
 
-const button = document.getElementById('btn-start')
+let button = document.getElementById('btn-start')
 button.onclick = function () {
-  let interval = setInterval(moveBox, 20)
+  var interval = setInterval(moveBox, 20)
   setLevel(arrCards)
-  const timerId = setTimeout(flipCards, 2000, cards)
+  let timerId = setTimeout(flipCards, 2000, cards)
 }
+
+music.play()
+var muted = false
+play.classList.add('sound-on')
 
 play.onclick = function () {
-  music.play()
-}
-
-pause.onclick = function () {
-  music.pause()
+  muted = !muted
+  if (muted) {
+    play.classList.remove('sound-off')
+    play.classList.add('sound-on')
+    music.play()
+  } else {
+    music.pause()
+    play.classList.remove('sound-on')
+    play.classList.add('sound-off')
+  }
 }
 
 // ------------------------------------------------
 
-const character = document.getElementById('character')
-let characterLeft = 520
+let character = document.getElementById('character')
+let characterLeft = 520;
 
 const moveBox = function () {
-  if (characterLeft > -20) {
+  if (characterLeft > -20 ) {
     characterLeft -= 1
   }
   character.style.left = characterLeft + 'px'
