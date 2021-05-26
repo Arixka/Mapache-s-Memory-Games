@@ -5,10 +5,10 @@ const arrCards = ['ice-cream', 'waffle', 'pancake', 'donut', 'ice-cream', 'waffl
 
 let matchCard = [] // Selected card pair
 
-let sound = document.getElementById('sound') // variables de sonido
-let music = document.getElementById('music')
-let play = document.getElementById('btn-play')
-let pause = document.getElementById('btn-pause')
+const sound = document.getElementById('sound') // variables de sonido
+const music = document.getElementById('music')
+const play = document.getElementById('btn-play')
+const pause = document.getElementById('btn-pause')
 
 let contWinner = 0
 let contLoser = 2
@@ -49,7 +49,7 @@ function selectCard (card) {
       matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
     } else {
-      let timerId = setTimeout(flipCards, 500, matchCard)
+      const timerId = setTimeout(flipCards, 500, matchCard)
       console.log('no coinciden')
       contLoser--
       if (contLoser === 0) {
@@ -82,7 +82,7 @@ function resetLevel (timerId) {
 
 function reset (arr) {
   arr.forEach(elem => {
-    var classes = elem.getAttribute('class').split(' ')
+    let classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
     if (elem.classList.value !== '') {
       elem.classList.remove('initial')
@@ -92,11 +92,11 @@ function reset (arr) {
 
 // -------------------------------------------------
 
-let button = document.getElementById('btn-start')
+const button = document.getElementById('btn-start')
 button.onclick = function () {
-  var interval = setInterval(moveBox, 20)
+  let interval = setInterval(moveBox, 20)
   setLevel(arrCards)
-  let timerId = setTimeout(flipCards, 2000, cards)
+  const timerId = setTimeout(flipCards, 2000, cards)
 }
 
 play.onclick = function () {
@@ -109,12 +109,12 @@ pause.onclick = function () {
 
 // ------------------------------------------------
 
-let character = document.getElementById('character')
-let characterLeft = 520;
+const character = document.getElementById('character')
+let characterLeft = 520
 
 const moveBox = function () {
-  if (characterLeft > -20 ) {
+  if (characterLeft > -20) {
     characterLeft -= 1
   }
-  character.style.left = characterLeft+'px'
+  character.style.left = characterLeft + 'px'
 }
