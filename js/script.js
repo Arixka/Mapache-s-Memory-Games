@@ -9,9 +9,9 @@ const arrCards = ['ice-cream', 'waffle', 'pancake', 'donut', 'ice-cream', 'waffl
 
 let matchCard = [] // Selected card pair
 
-let sound = document.getElementById('sound') // variables de sonido
-let music = document.getElementById('music')
-let play = document.getElementById('sound-button')
+const sound = document.getElementById('sound') // variables de sonido
+const music = document.getElementById('music')
+const play = document.getElementById('sound-button')
 
 let contWinner = 0
 
@@ -40,6 +40,7 @@ function setLevel (level) { // damos colores a las cartas
 // ----------------------------------------------
 
 function selectCard (card) {
+  character.classList.remove('wrong')
   matchCard.push(card)
   if (matchCard.length === 2) {
     matchCard[1].classList.toggle('initial')
@@ -54,6 +55,8 @@ function selectCard (card) {
         clearInterval(interval)
       }
     } else {
+      character.classList.add('wrong')
+      characterLeft -= 25
       const timerId = setTimeout(flipCards, 500, matchCard)
     }
     matchCard = []
@@ -93,18 +96,26 @@ function reset (arr) {
   })
 }
 
-// -------------------------------------------------
+// ----------------------------START---------------------
 
 music.play()
-var muted = false
+let muted = false
 play.classList.add('sound-on')
 
-const btnStart = document.getElementById('btn-start')
+const countDown = document.getElementsByClassName('countdown')[0]
 
-btnStart.onclick = function () {
-  setLevel(arrCards)
-  const timerId = setTimeout(flipCards, 2000, cards)
-  btnStart.style.display = 'none'
+function startCountdown () {
+  const timerId = setInterval(function () {
+    if (countDown.childNodes[1].innerText === 'Ready?') {
+      setLevel(arrCards)
+      const timerId2 = setTimeout(flipCards, 2000, cards)
+      clearInterval(timerId)
+      countDown.style.display = 'none'
+    }
+    const value = parseInt(countDown.childNodes[1].innerText)
+    countDown.childNodes[1].innerText = value - 1
+    if (value === 1) { countDown.childNodes[1].innerText = 'Ready?' }
+  }, 1000)
 }
 
 // --------------------------------------------
@@ -182,4 +193,7 @@ const btnPlayCover = document.getElementById('btn-cover')
 btnPlayCover.onclick = function () {
   modalCover[0].classList.remove('show')
   modalCover[0].classList.add('close')
+  countDown.style.display = 'block'
+  // btnStart.style.display = 'none'
+  startCountdown()
 }
