@@ -2,12 +2,27 @@
 <html>
 
 <head>
+  <title>Mapache's memory</title>
   <link rel="stylesheet" href="../css/main.css">
   <script defer src="../js/script.js"></script>
 </head>
 
 <body>
   <div id="bar-progress"><div id="bar"></div></div>
+  <div>
+    <p id="title">MAPACHE'S MEMORY</p>
+  </div>
+
+
+
+  <div id="time">
+    <div id="fullness-bar"></div>
+    <div id="time-line"></div>
+    <div id="character"></div>
+  </div>
+
+
+
   <div id="canvas">
     <div id="background"></div>
     <div id="table">
@@ -21,7 +36,7 @@
       <div id="img7"></div>
       <div id="img8"></div>
 
-    </div> 
+    </div>
     <div id="btn-start"><button id="start" type="button">START</button></div>
   </div>
   <!-- ventana modal game over-->
@@ -46,7 +61,18 @@
 </div>
 <!-- <button id="open-modal2">modal-win</button> -->
 
+  <div><button id="btn-play"></button></div>
+  <div><button id="btn-pause"></button></div>
+
+  <audio id="music" autoplay loop>
+    <source src="../music/yt1s.com_-_Ikson_Paradise_Official.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="sound" autoplay>
+    <source src="../music/download.wav" type="audio/wav">
+  </audio>
+
+
 </body>
 
 </html>
-
