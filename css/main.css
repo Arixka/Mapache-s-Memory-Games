@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chela+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
 
 body {
   background-image: url(../imagenes/wall2.jpg);
@@ -44,7 +46,8 @@ body {
 #canvas {
   width: 600px;
   height: 400px;
-  margin: 0 0 0 10vh;
+  left: 20vw;
+  top: 25px;
   overflow: hidden;
   position: relative;
   border-radius: 10px;
@@ -128,25 +131,26 @@ body {
 /*------------------------------*/
 
 
-/* The Modal (background) */
+/* Windows Modal */
 .modal {
-  position: absolute; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 35vw;
+  position: absolute; 
+  z-index: 1;  
+  padding-top: 100px;  
+  left: 20vw;
   top: 25px;
-  height: 600px;
-  width: 610px;
-  overflow: auto; /* Enable scroll if needed */
+  height: 550px;
+  width: 650px;
+  overflow: auto;  
   background-color: rgb(255, 255, 255);
+  /* background-image: "../imagenes/fondo.gif"; */
   border-radius: 5px;
   border: 2px solid black;
   background-size: cover;
 }
 
-/* Modal Content */
 .modal-container {
-  height: 400px;
+  margin: 30px 0px 30px 20px;
+  height: 500px;
   width: 600px;
   text-align: center;
   font-size: 40px;
@@ -155,40 +159,59 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-/* The Modal (background) */
-.modal2 {
-  position: absolute; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 35vw;
+
+
+.modal-container2 {
+  height: 500px;
+  width: 600px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Chela One', cursive;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.modal-container-cover {
+  height: 500px;
+  width: 600px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Chela One', cursive;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.modal-cover {
+  position: absolute; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 20vw;
   top: 25px;
-  height: 600px;
-  width: 610px;
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(255, 255, 255);
+  height: 550px;
+  width: 650px;
+  overflow: auto; 
+  background-image: url(../imagenes/cover.jpeg);
   border-radius: 5px;
   border: 2px solid black;
   background-size: cover;
 }
 
-/* Modal Content */
-.modal-container2 {
-  height: 400px;
-  width: 600px;
+#btn-cover {
   text-align: center;
-  font-size: 40px;
-  font-family: 'Chela One', cursive;
-  display: none;
-  pointer-events: none;
-  z-index: 1;
+  margin-bottom: 15px;
 }
 
-
+#img-cover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
 #img-game-over{
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }
 .show {
   display: block;
@@ -201,7 +224,6 @@ body {
   pointer-events: auto;
   opacity: 1;
 }
-
 
 #btn-pause {
   background-image: url(../imagenes/pausita.png);
@@ -250,4 +272,14 @@ body {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+#btn-reset, #btn-reset2 {
+  background-color: rgb(199 255 152);
+  border-color: rgb(199 255 152);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
 }

@@ -1,7 +1,7 @@
 let interval
 
 const cards = document.querySelectorAll('[id^="img"]') // DOM card placeholders
-cards.forEach(function (elem) {
+cards.forEach(function (elem) { // los ponemos a none para no clickar hasta que empiece
   elem.style.pointerEvents = 'none'
 })
 
@@ -15,12 +15,11 @@ const play = document.getElementById('btn-play')
 const pause = document.getElementById('btn-pause')
 
 let contWinner = 0
-let contLoser = 2
 
 const modal = document.getElementById('myModal')
 // --------------------------------------------
 
-function setLevel(level) { // damos colores a las cartas
+function setLevel (level) { // damos colores a las cartas
   const freePositions = [0, 1, 2, 3, 4, 5, 6, 7]
 
   for (let i = 0; i < level.length; i++) {
@@ -40,26 +39,23 @@ function setLevel(level) { // damos colores a las cartas
 
 // ----------------------------------------------
 
-function selectCard(card) {
+function selectCard (card) {
   matchCard.push(card)
   if (matchCard.length === 2) {
-    //  matchCard[0].style.pointerEvents = 'auto'
     matchCard[1].classList.toggle('initial')
     if (matchCard[0].getAttribute('class') === matchCard[1].getAttribute('class')) {
-      console.log('coinciden')
       contWinner++
       matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
-      if (contWinner === 4) {        
+      if (contWinner === 4) {
         modalContainer2[0].classList.remove('close')
-        modalContainer2[0].classList.add('show')        
-        resetLevel(arrCards)
+        modalContainer2[0].classList.add('show')
+        resetRacoon()
+        clearInterval(interval)
       }
     } else {
       const timerId = setTimeout(flipCards, 500, matchCard)
-      console.log('no coinciden')
     }
-    console.log(matchCard[0])
     matchCard = []
   } else if (matchCard.length === 1) {
     matchCard[0].style.pointerEvents = 'none'
@@ -67,33 +63,29 @@ function selectCard(card) {
   }
 }
 
-function flipCards(arr) {
+function flipCards (arr) {
   arr.forEach(elem => {
     elem.classList.toggle('initial')
     if (elem.classList.value.includes('initial')) {
       elem.style.pointerEvents = 'auto'
-      console.log('"inital state" - clickable! -->', elem)
-    } else { elem.style.pointerEvents = 'none'; console.log('NOT clickable! -->', elem) }
+    } else { elem.style.pointerEvents = 'none' }
   })
-  let speed = 20
-  console.log('speed -->', speed)
   if (arr === cards) { interval = setInterval(moveBox, 20) }
 }
 
-function resetLevel(timerId) {
+function resetLevel (timerId) {
+  characterLeft = 520
+  cards.forEach(function (elem) { elem.style.pointerEvents = 'auto' })
   contWinner = 0
-  contLoser = 2
   reset(cards)
   clearTimeout(timerId)
   setLevel(arrCards)
   setTimeout(flipCards, 2000, cards)
-  characterLeft = 520
-  barWidth = 100
 }
 
-function reset(arr) {
+function reset (arr) {
   arr.forEach(elem => {
-    let classes = elem.getAttribute('class').split(' ')
+    const classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
     if (elem.classList.value !== '') {
       elem.classList.remove('initial')
@@ -103,37 +95,33 @@ function reset(arr) {
 
 // -------------------------------------------------
 
-const button = document.getElementById('btn-start')
-button.onclick = function () {
+const btnStart = document.getElementById('btn-start')
+btnStart.onclick = function () {
   setLevel(arrCards)
   const timerId = setTimeout(flipCards, 2000, cards)
-  button.style.display ='none'
+  btnStart.style.display = 'none'
 }
 
-// -------------------
-const btnModal = document.getElementById('open-modal')
-const btnModalWin = document.getElementById('open-modal2')
+// --------------------------------------------
 
-const modalContainer = document.getElementsByClassName('modal-container')
-const modalContainer2 = document.getElementsByClassName('modal-container2')
-const btnReset = document.getElementById('btn-reset')
-const btnReset2 = document.getElementById('btn-reset2')
+const modalContainer = document.getElementsByClassName('modal-container') // game -over
+const modalContainer2 = document.getElementsByClassName('modal-container2') // you win
+const modalCover = document.getElementsByClassName('modal-container-cover') // cover
 
-btnReset.addEventListener('click', function () {
+const btnResetGameOver = document.getElementById('btn-reset')
+const btnResetWin = document.getElementById('btn-reset2')
+
+btnResetGameOver.addEventListener('click', function () {
   modalContainer[0].classList.add('close')
   modalContainer[0].classList.remove('show')
+  resetLevel(cards)
 })
 
-btnReset2.addEventListener('click', function () {
+btnResetWin.addEventListener('click', function () {
   modalContainer2[0].classList.add('close')
   modalContainer2[0].classList.remove('show')
+  resetLevel(cards)
 })
-
-const buttonStart = document.getElementById('btn-start')
-buttonStart.onclick = function () {
-  setLevel(arrCards)
-  const timerId = setTimeout(flipCards, 2000, cards)
-}
 
 play.onclick = function () {
   music.play()
@@ -144,28 +132,40 @@ pause.onclick = function () {
 }
 
 // ------------------------------------------------
+// funcion que resetee el muñeco y la barra
 
 const character = document.getElementById('character')
 const bar = document.getElementById('fullness-bar')
 let characterLeft = 520
-let barWidth = character.style.left
+const barWidth = character.style.left
 
 const moveBox = function (timerId) {
   if (characterLeft > -20) {
     characterLeft -= 1
   } else {
     clearInterval(interval)
-    lose()
+    modalLose()
   }
   character.style.left = characterLeft + 'px'
+  bar.style.width = (parseInt(character.style.left.match(/\d+/)) + 30) + 'px' 
+}
+
+function resetRacoon () {
+  character.style.left = 520 + 'px'
   bar.style.width = (parseInt(character.style.left.match(/\d+/)) + 30) + 'px'
 }
-
 // -----------------LOSE-FUNCTION-------------------
 
-function lose(timerId) {
-  window.alert('LOOOSER!!')
-  resetLevel(timerId)
+function modalLose (timerId) {
+  characterLeft = 520
+  modalContainer[0].classList.remove('close')
+  modalContainer[0].classList.add('show')
 }
 
-resetBar()
+// -------------------------
+const btnPlayCover = document.getElementById('btn-cover')
+
+btnPlayCover.onclick = function () {
+  modalCover[0].classList.remove('show')
+  modalCover[0].classList.add('close')
+}
