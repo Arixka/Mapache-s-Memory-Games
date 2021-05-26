@@ -36,7 +36,6 @@ function selectCard (card) {
     matchCard[0].style.pointerEvents = 'auto'
     matchCard[1].classList.toggle('initial')
     if (matchCard[0].getAttribute('class') === matchCard[1].getAttribute('class')) {
-      console.log('coinciden')
       contWinner++
       if (contWinner === 4) {
         // window.alert('WINNEEER!!!')
@@ -56,7 +55,6 @@ function selectCard (card) {
         resetLevel(timerId)
       }
     }
-    console.log(matchCard[0])
     matchCard = []
   } else if (matchCard.length === 1) {
     matchCard[0].style.pointerEvents = 'none'
@@ -71,7 +69,7 @@ function flipCards (arr) {
 }
 
 function resetLevel (timerId) {
-  console.log('por aqui')
+  cards.forEach(function(elem) {elem.style.pointerEvents = 'auto'})
   contWinner = 0
   contLoser = 2
   reset(cards)
@@ -81,7 +79,6 @@ function resetLevel (timerId) {
 }
 
 function reset (arr) {
-  console.log('por aca')
   arr.forEach(elem => {
     const classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
@@ -97,33 +94,36 @@ const button = document.getElementById('btn-start')
 button.onclick = function () {
   setLevel(arrCards)
   const timerId = setTimeout(flipCards, 2000, cards)
-  button.style.display ='none'
+  button.style.display = 'none'
 }
 
-// -------------------
-const btnModal = document.getElementById('open-modal')
-const btnModalWin = document.getElementById('open-modal2')
+// --------------------------------------------
 
-const modalContainer = document.getElementsByClassName('modal-container')
-const modalContainer2 = document.getElementsByClassName('modal-container2')
+const modalContainer = document.getElementsByClassName('modal-container') // game -over
+const modalContainer2 = document.getElementsByClassName('modal-container2') // you win
+const modalCover = document.getElementsByClassName('modal-container-cover') // you win
+
+
+
 const btnReset = document.getElementById('btn-reset')
 const btnReset2 = document.getElementById('btn-reset2')
 
 btnReset.addEventListener('click', function () {
   modalContainer[0].classList.add('close')
   modalContainer[0].classList.remove('show')
+  resetLevel(cards)
 })
 
 btnReset2.addEventListener('click', function () {
   modalContainer2[0].classList.add('close')
   modalContainer2[0].classList.remove('show')
+  resetLevel(cards)
 })
-// ----- btn-modal que se va pronto
-// btnModal.addEventListener('click', function () {
-//   modalContainer[0].classList.remove('close')
-//   modalContainer[0].classList.add('show')
-// })
-// btnModalWin.addEventListener('click', function(){
-//   modalContainer2[0].classList.remove('close')
-//   modalContainer2[0].classList.add('show')
-// })
+
+// -------------------------
+const btnPlayCover = document.getElementById('btn-cover')
+
+btnPlayCover.onclick = function () {
+  modalCover[0].classList.remove('show')
+  modalCover[0].classList.add('close')
+}
