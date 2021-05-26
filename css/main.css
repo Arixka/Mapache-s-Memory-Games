@@ -1,16 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Chela+One&display=swap');
+
+/*title font*/
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Titan+One&display=swap');
+
+/*buttons font*/
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 body {
   background-image: url(../imagenes/wall2.jpg);
   background-size: cover;
+  margin-left: 20%;
 }
 
 #title {
-  text-align: center;
   font-size: 7vh;
-  font-family: 'Chela One', cursive;
+  font-family: 'Titan One', cursive;
   margin-top: 50px;
-  margin-bottom: 0;
+  margin: 50px 0 0 12vh;
 }
 
 #time {
@@ -109,6 +114,8 @@ body {
   font-weight: 600;
   font-size: 16px;
   margin-top: -5px;
+  cursor: pointer;
+  font-family: 'Patrick Hand', cursive;
 }
 
 #background {
@@ -126,8 +133,8 @@ body {
 
 #sound-button {
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border-radius: 30px;
   position: absolute;
   margin-top: 20px;
