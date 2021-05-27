@@ -73,6 +73,7 @@ function selectCard (card) { // cogemos dos cartas. las metemos en un array y co
       }, 300)
       winnerCondition(contWinner)
     } else { // Para cambiar la barra a rojo brevemente
+      matchCard[1].style.pointerEvents = 'none'
       character.classList.add('wrong')
       bar.classList.add('time-wrong')
       setTimeout(function () {
