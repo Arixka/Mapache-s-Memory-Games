@@ -100,6 +100,7 @@ function flipCards (arr) {
 }
 
 function reset (arr) {
+  console.log(arr) // ---- esta vacio? muchos reset
   arr.forEach(elem => {
     const classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
