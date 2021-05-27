@@ -14,9 +14,9 @@ let contWinner = 0
 
 const modal = document.getElementById('myModal')
 
-const modalContainer = document.getElementsByClassName('modal-container') // game -over
-const modalContainer2 = document.getElementsByClassName('modal-container2') // you win
-const modalCover = document.getElementsByClassName('modal-container-cover') // cover
+const modalLose = document.getElementById('modal-lose') // game -over
+const modalWin = document.getElementById('modal-win') // you win
+const modalCover = document.getElementById('modal-cover') // cover
 
 const btnResetGameOver = document.getElementById('btn-reset')
 const btnResetWin = document.getElementById('btn-reset2')
@@ -50,8 +50,8 @@ function randomCard (level) { // damos imágenes random a las cartas
 
 function winnerCondition (condition) { // condición de ganada
   if (contWinner === 4) {
-    modalContainer2[0].classList.remove('close')
-    modalContainer2[0].classList.add('show')
+    modalWin.classList.remove('close')
+    modalWin.classList.add('show')
     resetRacoon()
     clearInterval(interval)
   }
@@ -68,7 +68,6 @@ function selectCard (card) { // cogemos dos cartas. las metemos en un array y co
       matchCard[1].style.pointerEvents = 'none'
       bar.classList.add('time-right')
       characterLeft += 25
-      
       setTimeout(function () {
         bar.classList.remove('time-right')
       }, 300)
@@ -143,16 +142,17 @@ function startCountdown () {
     if (value === 1) { countDown.childNodes[1].innerText = 'Ready?' }
   }, 1000)
 }
+console.log(modalLose)
 
 btnResetGameOver.addEventListener('click', function () {
-  modalContainer[0].classList.add('close')
-  modalContainer[0].classList.remove('show')
+  modalLose.classList.add('close')
+  modalLose.classList.remove('show')
   resetLevel(cards)
 })
 
 btnResetWin.addEventListener('click', function () {
-  modalContainer2[0].classList.add('close')
-  modalContainer2[0].classList.remove('show')
+  modalWin.classList.add('close')
+  modalWin.classList.remove('show')
   resetLevel(cards)
 })
 
@@ -178,7 +178,7 @@ const moveRacoon = function (timerId) {
     characterLeft -= 1
   } else {
     clearInterval(interval)
-    modalLose()
+    closeModalLose()
   }
   character.style.left = characterLeft + 'px'
   bar.style.width = (parseInt(character.style.left.match(/\d+/)) + 30) + 'px'
@@ -189,15 +189,15 @@ function resetRacoon () {
   bar.style.width = (parseInt(character.style.left.match(/\d+/)) + 30) + 'px'
 }
 
-function modalLose (timerId) {
+function closeModalLose (timerId) {
   characterLeft = 520
-  modalContainer[0].classList.remove('close')
-  modalContainer[0].classList.add('show')
+  modalLose.classList.remove('close')
+  modalLose.classList.add('show')
 }
 
 btnPlayCover.onclick = function () {
-  modalCover[0].classList.remove('show')
-  modalCover[0].classList.add('close')
+  modalCover.classList.remove('show')
+  modalCover.classList.add('close')
   countDown.style.display = 'block'
   startCountdown()
 }

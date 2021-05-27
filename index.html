@@ -3,7 +3,7 @@
 
 <head>
   <title>Mapache's memory</title>
-  <link rel="stylesheet" href="src//main.css">
+  <link rel="stylesheet" href="styles/main.css">
   <script defer src="src/script.js"></script>
 </head>
 
@@ -41,21 +41,17 @@
   </div>
   <!-- ventanas modales-->
 
-<div class="modal-container">
-  <div class="modal">
+  <div id="modal-lose" class="modal modal-win-lose">
     <img id="img-game-over" src="assets/imagenes/mDream.jpg" alt="">
     <h1>You fell asleep</h1>
-  <button id="btn-reset">TRY AGAIN</button>
+    <button id="btn-reset">TRY AGAIN</button>
   </div>
-</div>
 
-<div class="modal-container2">
-  <div class="modal">
+  <div id="modal-win" class="modal modal-win-lose">
     <img id="img-win" src="assets/imagenes/mEat.jpg" alt="">
     <h1>You won</h1>
-  <button id="btn-reset2">TRY AGAIN</button>
+    <button id="btn-reset2">TRY AGAIN</button>
   </div>
-</div>
 
   <!-- <div><button id="sound-button"></button></div> -->
 
@@ -68,14 +64,17 @@
   </audio>
 
 
-<div class="modal-container-cover show">
-  <div class="modal-cover">
+  <!-- <div class="modal-container-cover show">
+    <div class="modal-cover">
+      <h1>WELCOME TO MAPACHE'S MEMORY</h1>
+    <button id="btn-cover" type="button">PLAY NOW</button>
+    </div>
+  </div> -->
+
+  <div id="modal-cover" class="modal modal-cover show">
     <h1>WELCOME TO MAPACHE'S MEMORY</h1>
-  <button id="btn-cover" type="button">PLAY NOW</button>
-  </div>
-</div>
-
-
+    <button id="btn-cover" type="button">PLAY NOW</button>
+  </div> 
 
 </body>
 

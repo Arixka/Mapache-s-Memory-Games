@@ -6,26 +6,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 body {
-  background-image: url(../assets/imagenes/wall2.jpg);
+  width: 100%;
+  background-image: url('../assets/imagenes/wall2.jpg');
   background-size: cover;
-  margin-left: 20%;
 }
 
 #title {
-  font-size: 7vh;
+  font-size: 6.7vh;
   font-family: 'Titan One', cursive;
-  margin-top: 50px;
-  margin: 50px 0 0 12vh;
+  margin: 50px auto 0 auto;
   color: antiquewhite;
   -webkit-text-stroke: 1px #a8596e;
   user-select: none;
+  text-align: center;
 }
   
 #time {
   position: relative;
   width: 600px;
   height: 100px;
-  margin-left: 10vh;
+  margin: 0 auto;
 }
 
 #time-line {
@@ -40,7 +40,7 @@ body {
 
 #character {
   position: absolute;
-  background-image: url(../assets/imagenes/mapache.png);
+  background-image: url('../assets/imagenes/mapache.png');
   background-size: cover;
   margin-top: 10px;
   right: -5px;
@@ -52,12 +52,12 @@ body {
 #canvas {
   width: 600px;
   height: 400px;
-  left: 5vw;
-  top: 25px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   border-radius: 10px;
   border: 1px solid black;
+  z-index: 1;
 }
 
 #table > div{
@@ -120,25 +120,46 @@ body {
 }
 
 /* Windows Modal */
-
 .modal {
-  background-image: url(../assets/imagenes/lluvia.gif);
-  background-color: white;
-  position: absolute; 
-  z-index: 1;  
-  padding-top: 100px;  
-  left: 20vw;
-  top: 25px;
-  height: 550px;
+  position: absolute;
   width: 800px;
-  overflow: auto;  
-  background-color: rgb(255, 255, 255);
-  /* background-image: "../imagenes/fondo.gif"; */
-  border-radius: 5px;
-  border: 2px solid black;
+  height: 550px;
+  top: 50px;
+  left: 50%;
+  margin-left: -400px;
   background-size: cover;
+  z-index: 1;  
+  padding-top: 100px;
+  overflow: auto;  
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+  pointer-events: none;
 }
 
+/* .modal-container-cover {
+  height: 500px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+  pointer-events: none;
+  z-index: 1;
+}  */
+
+.modal-cover {
+  padding-top: 200px;
+  background-image: url(../assets/imagenes/cover.jpeg);
+}
+
+.modal-win-lose {
+  padding-top: 200px;
+  background-image: url(../assets/imagenes/lluvia.gif);
+  background-color: white;
+}
+
+/* 
 .modal-container {
   margin: 30px 0px 30px 20px;
   height: 750px;
@@ -165,11 +186,29 @@ body {
 .modal-container-cover {
   height: 500px;
   width: 600px;
+  margin: 0 auto;
   text-align: center;
   display: none;
   pointer-events: none;
   z-index: 1;
+} 
+
+.modal-cover {
+  position: absolute; 
+  z-index: 1; 
+  padding-top: 200px;
+  margin: 0 auto;
+  top: 50px;
+  height: 450px;
+  width: 800px;
+  overflow: auto; 
+  background-image: url(../assets/imagenes/cover.jpeg);
+  border-radius: 5px;
+  border: 2px solid black;
+  background-size: cover;
 }
+
+*/
 
 h1 {
   text-align: center;
@@ -181,20 +220,6 @@ h1 {
   user-select: none;
 }
 
-.modal-cover {
-  position: absolute; 
-  z-index: 1; 
-  padding-top: 200px;
-  left: 20vw;
-  top: 50px;
-  height: 450px;
-  width: 800px;
-  overflow: auto; 
-  background-image: url(../assets/imagenes/cover.jpeg);
-  border-radius: 5px;
-  border: 2px solid black;
-  background-size: cover;
-}
 
 #btn-cover {
   text-align: center;
