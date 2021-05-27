@@ -1,9 +1,9 @@
 let interval
 
 const cards = document.querySelectorAll('[id^="img"]') // DOM card placeholders
-cards.forEach(function (elem) { // los ponemos a none para no clickar hasta que empiece
-  elem.style.pointerEvents = 'none'
-})
+// cards.forEach(function (elem) { // los ponemos a none para no clickar hasta que empiece
+//   elem.style.pointerEvents = 'none'
+// })
 
 const arrCards = ['ice-cream', 'waffle', 'pancake', 'donut', 'ice-cream', 'waffle', 'pancake', 'donut'] // Card combination
 
@@ -18,7 +18,9 @@ let contWinner = 0
 const modal = document.getElementById('myModal')
 // --------------------------------------------
 
-function setLevel (level) { // damos colores a las cartas
+blockCards(cards)
+
+function randomCard (level) { // damos imágenes random a las cartas
   const freePositions = [0, 1, 2, 3, 4, 5, 6, 7]
 
   for (let i = 0; i < level.length; i++) {
@@ -39,16 +41,16 @@ function setLevel (level) { // damos colores a las cartas
 
 // ----------------------------------------------
 
-function selectCard (card) {
+function selectCard (card) { // cogemos dos cartas. las metemos en un array y comprobamos condición
   character.classList.remove('wrong')
   matchCard.push(card)
-  if (matchCard.length === 2) {
+  if (matchCard.length === 2) { 
     matchCard[1].classList.toggle('initial')
     if (matchCard[0].getAttribute('class') === matchCard[1].getAttribute('class')) {
       contWinner++
       matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
-      if (contWinner === 4) {
+      if (contWinner === 4) { // condición de ganada
         modalContainer2[0].classList.remove('close')
         modalContainer2[0].classList.add('show')
         resetRacoon()
@@ -58,12 +60,17 @@ function selectCard (card) {
       // ------------------------------------- Para cambiar la barra a rojo brevemente
       character.classList.add('wrong')
       bar.classList.add('time-wrong')
-      // ----------------------------------------
+
+      setTimeout(function () {
+        bar.classList.remove('time-wrong')
+      }, 300)
+
+      // --------------cuando el jugador falla, penalizamos disminuyendo el tiempo--------------------------
       characterLeft -= 25
       const timerId = setTimeout(flipCards, 500, matchCard)
     }
     matchCard = []
-  } else if (matchCard.length === 1) {
+  } else if (matchCard.length === 1) { // para no dar click de nuevo a la carta ya elegida
     matchCard[0].style.pointerEvents = 'none'
     matchCard[0].classList.toggle('initial')
   }
@@ -73,10 +80,26 @@ function flipCards (arr) {
   arr.forEach(elem => {
     elem.classList.toggle('initial')
     if (elem.classList.value.includes('initial')) {
-      elem.style.pointerEvents = 'auto'
+      elem.style.pointerEvents = 'auto' // si la carta está al anverso podemos clickar
     } else { elem.style.pointerEvents = 'none' }
   })
-  if (arr === cards) { interval = setInterval(moveBox, 20) }
+  if (arr === cards) { interval = setInterval(moveRacoon, 20) }
+}
+
+function reset(arr) {
+  arr.forEach(elem => {
+    const classes = elem.getAttribute('class').split(' ')
+    elem.classList.remove(classes[0])
+    if (elem.classList.value !== '') {
+      elem.classList.remove('initial')
+    }
+  })
+}
+
+function blockCards(cards) {
+  cards.forEach(function (elem) { // los ponemos a none para no clickar hasta que empiece
+    elem.style.pointerEvents = 'none'
+  })
 }
 
 function resetLevel (timerId) {
@@ -85,18 +108,9 @@ function resetLevel (timerId) {
   contWinner = 0
   reset(cards)
   clearTimeout(timerId)
-  setLevel(arrCards)
+  randomCard(arrCards)
   setTimeout(flipCards, 2000, cards)
-}
-
-function reset (arr) {
-  arr.forEach(elem => {
-    const classes = elem.getAttribute('class').split(' ')
-    elem.classList.remove(classes[0])
-    if (elem.classList.value !== '') {
-      elem.classList.remove('initial')
-    }
-  })
+  blockCards(cards)
 }
 
 // ----------------------------START---------------------
@@ -110,7 +124,7 @@ const countDown = document.getElementsByClassName('countdown')[0]
 function startCountdown () {
   const timerId = setInterval(function () {
     if (countDown.childNodes[1].innerText === 'Ready?') {
-      setLevel(arrCards)
+      randomCard(arrCards)
       const timerId2 = setTimeout(flipCards, 2000, cards)
       clearInterval(timerId)
       countDown.style.display = 'none'
@@ -167,7 +181,7 @@ const bar = document.getElementsByClassName('fullness-bar')[0]
 let characterLeft = 520
 const barWidth = character.style.left
 
-const moveBox = function (timerId) {
+const moveRacoon = function (timerId) {
   if (characterLeft > -20) {
     characterLeft -= 1
   } else {

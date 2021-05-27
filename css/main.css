@@ -243,17 +243,19 @@ h1 {
   height: 25px;
   border-radius: 30px;
   position: absolute;
-  margin-top: 35px;
-  margin-left: 100px;
+  bottom: 4px;
+  left: 5px;
   cursor: pointer;
+  z-index: 20;
+  border: 1px solid rgb(112, 75, 98);
 }
 
 .sound-on {
-    background-image: url(../imagenes/sound-on.png);
+    background-image: url(../imagenes/sound-on-pink.png);
 }
 
 .sound-off {
-    background-image: url(../imagenes/sound-off.png);
+    background-image: url(../imagenes/sound-off-pink.png);
 }
 
 .fullness-bar {
@@ -295,14 +297,20 @@ h1 {
   pointer-events: none;
   z-index: 1;
   position: absolute;
-  left: 70vw;
-  top: 40vh;
+  left: 33%;
+  top: 35%;
+  width: 200px;
+  height: 100px;
 }
+
+/* .countdown > h1 {
+  text-align: center;
+} */
 
 .wrong {
   animation: shake 0.3s;
 }
 
 .time-wrong {
-  background-color: red;
+  background-color: rgb(238, 77, 77);
 }
