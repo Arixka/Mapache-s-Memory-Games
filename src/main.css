@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 body {
-  background-image: url(../imagenes/wall2.jpg);
+  background-image: url(/assets/imagenes/wall2.jpg);
   background-size: cover;
   margin-left: 20%;
 }
@@ -40,7 +40,7 @@ body {
 
 #character {
   position: absolute;
-  background-image: url(../imagenes/mapache.png);
+  background-image: url(/assets/imagenes/mapache.png);
   background-size: cover;
   margin-top: 10px;
   right: -5px;
@@ -87,27 +87,27 @@ body {
 }
 
 .ice-cream {
-  background-image: url(../imagenes/ice-cream.png);
+  background-image: url(/assets/imagenes/ice-cream.png);
   background-size: contain;
 }
 
 .pancake {
-  background-image: url(../imagenes/pancake.png);
+  background-image: url(/assets/imagenes/pancake.png);
   background-size: contain;
 }
 
 .donut {
-  background-image: url(../imagenes/donut.png);
+  background-image: url(/assets/imagenes/donut.png);
   background-size: contain;
 }
 
 .waffle {
-  background-image: url(../imagenes/waffle.png);
+  background-image: url(/assets/imagenes/waffle.png);
   background-size: contain;
 }
 
 #background {
-  background-image: url(../imagenes/fondo.gif);
+  background-image: url(/assets/imagenes/fondo.gif);
   background-size: contain;
   background-repeat: cover;
   position: absolute;
@@ -115,16 +115,14 @@ body {
 }
 
 .initial {
-  background-image: url(../imagenes/carta-cara-3.png);
+  background-image: url(/assets/imagenes/carta-cara-3.png);
   background-size: contain;
 }
-/*------------------------------*/
-
 
 /* Windows Modal */
 
 .modal {
-  background-image: url(../imagenes/lluvia.gif);
+  background-image: url(/assets/imagenes/lluvia.gif);
   background-color: white;
   position: absolute; 
   z-index: 1;  
@@ -152,7 +150,6 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-
 
 .modal-container2 {
   height: 750px;
@@ -193,7 +190,7 @@ h1 {
   height: 450px;
   width: 800px;
   overflow: auto; 
-  background-image: url(../imagenes/cover.jpeg);
+  background-image: url(/assets/imagenes/cover.jpeg);
   border-radius: 5px;
   border: 2px solid black;
   background-size: cover;
@@ -251,11 +248,11 @@ h1 {
 }
 
 .sound-on {
-    background-image: url(../imagenes/sound-on-pink.png);
+    background-image: url(/assets/imagenes/sound-on-pink.png);
 }
 
 .sound-off {
-    background-image: url(../imagenes/sound-off-pink.png);
+    background-image: url(/assets/imagenes/sound-off-pink.png);
 }
 
 .fullness-bar {
@@ -275,6 +272,11 @@ h1 {
   60% { transform: translate(-3px, 1px) rotate(0deg); }
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes jump {
+  0% { transform: translate(-50%, -50%) scale(1.25, 0.75); }
+  50% { transform: translate(-50%, -150%) scale(1, 1); }
 }
 
 #btn-reset, #btn-reset2 {
@@ -303,14 +305,17 @@ h1 {
   height: 100px;
 }
 
-/* .countdown > h1 {
-  text-align: center;
-} */
-
 .wrong {
   animation: shake 0.3s;
 }
 
+.right {
+  animation: jump 0.5;
+}
+
 .time-wrong {
   background-color: rgb(238, 77, 77);
+}
+.time-right{
+  background-color: rgb(245, 209, 92);
 }
