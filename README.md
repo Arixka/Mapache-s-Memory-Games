@@ -18,3 +18,5 @@ Augusto Hernández - https://github.com/arbust8
 María Siverio     - https://github.com/Arixka
 Karol Ariza       - https://github.com/Karolarizag
 
+## License 
+MIT License 
