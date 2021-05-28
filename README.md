@@ -9,6 +9,9 @@ You'll find a 'PLAY NOW' button and when you click it a countdown will start, th
 ## Link to play
 https://arixka.github.io/Mapache-s-Memory-Games/
 
+## Built with
+In this project we used vanilla java script for the functions, css for styling and html for structure.
+
 ## Contributors 
 
 Augusto Hernández - https://github.com/arbust8
