@@ -64,7 +64,6 @@ function selectCard (card) { // cogemos dos cartas. las metemos en un array y co
     matchCard[1].classList.toggle('initial')
     if (matchCard[0].getAttribute('class') === matchCard[1].getAttribute('class')) {
       contWinner++
-      matchCard[0].style.pointerEvents = 'none'
       matchCard[1].style.pointerEvents = 'none'
       bar.classList.add('time-right')
       characterLeft += 25
@@ -100,7 +99,7 @@ function flipCards (arr) {
 }
 
 function reset (arr) {
-  console.log(arr) // ---- esta vacio? muchos reset
+// console.log(arr) // ---- esta vacio? muchos reset
   arr.forEach(elem => {
     const classes = elem.getAttribute('class').split(' ')
     elem.classList.remove(classes[0])
@@ -118,13 +117,12 @@ function blockCards (cards) {
 
 function resetLevel (timerId) {
   characterLeft = 520
-  cards.forEach(function (elem) { elem.style.pointerEvents = 'auto' })
   contWinner = 0
   reset(cards)
   clearTimeout(timerId)
   randomCard(arrCards)
   setTimeout(flipCards, 2000, cards)
-  blockCards(cards)
+  //blockCards(cards)
 }
 
 music.play()
@@ -144,7 +142,6 @@ function startCountdown () {
     if (value === 1) { countDown.childNodes[1].innerText = 'Ready?' }
   }, 1000)
 }
-console.log(modalLose)
 
 btnResetGameOver.addEventListener('click', function () {
   modalLose.classList.add('close')
@@ -180,6 +177,7 @@ const moveRacoon = function (timerId) {
     characterLeft -= 1
   } else {
     clearInterval(interval)
+    blockCards(cards)
     closeModalLose()
   }
   character.style.left = characterLeft + 'px'
