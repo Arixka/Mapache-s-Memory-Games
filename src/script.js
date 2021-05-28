@@ -32,6 +32,14 @@ const btnPlayCover = document.getElementById('btn-cover')
 
 blockCards(cards)
 
+// special dev tool
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'w') {
+    contWinner = 4
+    winnerCondition()
+  }
+})
+
 function randomCard (level) { // damos imágenes random a las cartas
   const freePositions = [0, 1, 2, 3, 4, 5, 6, 7]
   for (let i = 0; i < level.length; i++) {
