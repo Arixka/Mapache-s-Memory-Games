@@ -36,7 +36,7 @@ blockCards(cards)
 document.addEventListener('keydown', function (e) {
   if (e.key === 'w') {
     contWinner = 4
-    winnerCondition()
+    winnerCondition(contWinner)
   }
 })
 
@@ -154,12 +154,14 @@ function startCountdown () {
 btnResetGameOver.addEventListener('click', function () {
   modalLose.classList.add('close')
   modalLose.classList.remove('show')
+  matchCard = []
   resetLevel(cards)
 })
 
 btnResetWin.addEventListener('click', function () {
   modalWin.classList.add('close')
   modalWin.classList.remove('show')
+  matchCard = []
   resetLevel(cards)
 })
 
